@@ -23,5 +23,6 @@ jobs:
           HOST_NAME: ${{secrets.HOST_NAME}}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ${PRIVATE_KEY}
           scp -o StrictHostKeyChecking=no -i private_key -r ./app ${USER_NAME}@${HOSTNAME}:/home/ubuntu/lcm
           
