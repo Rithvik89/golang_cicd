@@ -1,0 +1,16 @@
+name: Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  audit:
+    runs-on: ubunu-20.04
+    steps: 
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Setup golang
+        uses: actions/setup-go@v2
