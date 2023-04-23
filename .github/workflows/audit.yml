@@ -14,21 +14,21 @@ jobs:
         uses: actions/setup-go@v2   
       - name: Build code
         run: make cicd_build
-      # - name: SCP to EC2.
-      #   env: 
-      #     PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-      #     USER_NAME: ${{secrets.USER_NAME}}
-      #     HOST_NAME: ${{secrets.HOST_NAME}}
-      #   run: |
-      #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-      #     printf " here is the private key ${PRIVATE_KEY}/n"
-      #     scp -o StrictHostKeyChecking=no -i private_key -r ./app ${USER_NAME}@${HOSTNAME}:/home/ubuntu/lcm
-      - name: Connect to instace
-        uses: easingthemes/ssh-deploy@v3.0.1
-        env:
+      - name: SCP to EC2.
+        env: 
           PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-          REMOTE_USER: ${{secrets.USER_NAME}}
-          REMOTE_HOST: ${{secrets.HOST_NAME}}
-          TARGET: ${REMOTE_USER}@${REMOTE_HOST}:/home/ubuntu/sdl
+          USER_NAME: ${{secrets.USER_NAME}}
+          HOST_NAME: ${{secrets.HOST_NAME}}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          printf " here is the private key ${PRIVATE_KEY}/n"
+          scp -o StrictHostKeyChecking=no -i private_key -r ./app ${USER_NAME}@${HOSTNAME}:/home/ubuntu/cicd
+      # - name: Connect to instace
+      #   uses: easingthemes/ssh-deploy@v3.0.1
+      #   env:
+      #     PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
+      #     REMOTE_USER: ${{secrets.USER_NAME}}
+      #     REMOTE_HOST: ${{secrets.HOST_NAME}}
+      #     TARGET: ${REMOTE_USER}@${REMOTE_HOST}:/home/ubuntu/sdl
 
           
