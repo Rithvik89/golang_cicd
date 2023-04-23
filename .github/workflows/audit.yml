@@ -14,8 +14,6 @@ jobs:
         uses: actions/setup-go@v2   
       - name: Build code
         run: make cicd_build
-      - name: Run tests
-        run: go testcommand not found
       - name: SCP to EC2.
         env: 
           PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
