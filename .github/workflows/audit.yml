@@ -24,7 +24,7 @@ jobs:
       #     printf " here is the private key ${PRIVATE_KEY}/n"
       #     scp -o StrictHostKeyChecking=no -i private_key -r ./app ${USER_NAME}@${HOSTNAME}:/home/ubuntu/lcm
       - name: Connect to instace
-        uses: easingthemes/ssh-deploy@main
+        uses: easingthemes/ssh-deploy@v3.0.1
         env:
           PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
           REMOTE_USER: ${{secrets.USER_NAME}}
