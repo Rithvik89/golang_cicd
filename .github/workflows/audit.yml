@@ -21,8 +21,7 @@ jobs:
           HOST_NAME: ${{secrets.HOST_NAME}}
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          printf " here is the private key ${PRIVATE_KEY}/n"
-          scp -o StrictHostKeyChecking=no -i private_key -r ./app ${USER_NAME}@${HOSTNAME}:/home/ubuntu/cicd
+          scp -o StrictHostKeyChecking=no -i private_key -r ./app ${USER_NAME}@${HOST_NAME}:/home/ubuntu/cicd
       # - name: Connect to instace
       #   uses: easingthemes/ssh-deploy@v3.0.1
       #   env:
