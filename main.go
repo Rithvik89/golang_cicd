@@ -1,12 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
-	msg := sayHello("Alice")
-	fmt.Println(msg)
-}
 
-func sayHello(name string) string {
-	return fmt.Sprintf("Hi %s", name)
+	fmt.Printf("server succesfully started on port 3000")
+	err := http.ListenAndServe(":3000", nil)
+
+	if err != nil {
+		panic(err)
+	}
+
 }

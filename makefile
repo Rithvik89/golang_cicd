@@ -5,3 +5,6 @@ cicd_build:
 
 bb:
 	go build -o app/api  
+
+dev:
+	go run main.go
